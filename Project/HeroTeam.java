@@ -1,56 +1,69 @@
 package Java_OOP.Project;
 
+
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class HeroTeam {
+public class HeroTeam{
 
-    public static String Find(ArrayList<Base> heroTeam, int heroId)
+    public void TeamsCreate(ArrayList<Base> firstTeam, ArrayList<Base> secondTeam,int firstTeamCount, int secondTeamCount)
     {
-        for (Base base : heroTeam) {
-            if(heroId == base.getPlayerID())
-            {
-                return base.toString();
-            }
-        }
-
-        return "There is no hero with such an index";
+        firstTeam = CreateFirstTeam(firstTeamCount);
+        secondTeam = CreateSecondTeam(secondTeamCount);
     }
 
-    public ArrayList<Base> Create(int heroCount)
+    private ArrayList<Base> CreateFirstTeam(int heroCount)
     {
         Random random = new Random();
-        ArrayList<Base> list = new ArrayList<>();
-
+        ArrayList<Base> firstTeam = new ArrayList<>();
+        
         for (int i = 0; i < heroCount; i++) {
-            int value = random.nextInt(0,7);
+            int value = random.nextInt(0,4);
             switch (value) {
                 case 0:
-                list.add(new Monk());
+                firstTeam.add(new Peasant());
                     break;
                 case 1:
-                list.add(new Peasant());
-                    break;
-                case 2:
-                list.add(new Robber());
+                firstTeam.add(new Robber());
                     break;  
-                case 3:
-                list.add(new Sniper());
+                case 2:
+                firstTeam.add(new Sniper());
                     break;
-                case 4:
-                list.add(new Spearman());
-                    break; 
-                case 5:
-                list.add(new Wizard());
-                    break; 
-                case 6:
-                list.add(new Xbowman());
+                case 3:
+                firstTeam.add(new Wizard());
                     break;                
                 default:
                     break;
             }
         }
-        return list;
+        return firstTeam;
     }
 
+    private ArrayList<Base> CreateSecondTeam(int heroCount)
+    {
+        Random random = new Random();
+        ArrayList<Base> secondTeam = new ArrayList<>();
+
+        for (int i = 0; i < heroCount; i++) {
+            int value = random.nextInt(0,4);
+            switch (value) {
+                case 0:
+                secondTeam.add(new Monk());
+                    break;
+                case 1:
+                secondTeam.add(new Peasant());
+                    break;
+                case 2:
+                secondTeam.add(new Spearman());
+                    break; 
+                case 5:
+                secondTeam.add(new Xbowman());
+                    break;                
+                default:
+                    break;
+            }
+        }
+        return secondTeam;
+    }
 }
